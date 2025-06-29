@@ -1,0 +1,25 @@
+{
+  "name": "Java & Maven",
+  "dockerComposeFile": ["../.docker/docker-compose.yaml"],
+  "service": "app-java-maven",
+  "workspaceFolder": "/app",
+  "forwardPorts": [5432],
+  "portsAttributes": {
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "silent"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.java",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-dependency",
+        "vscjava.vscode-maven",
+        "mtxr.sqltools-driver-pg"
+      ]
+    }
+  },
+  "shutdownAction": "stopCompose"
+}

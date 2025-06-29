@@ -1,0 +1,36 @@
+services:
+  app-java-maven:
+    container_name: app-java-maven
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - SYSTEM_USERNAME=${SYSTEM_USERNAME}
+        - SYSTEM_USER_ID=${SYSTEM_USER_ID}
+    image: wevertontsousa/amazoncorretto:alpine
+    volumes:
+      - ..:/app:cached
+      - ~/.ssh/:/home/appuser/.ssh/:ro
+    networks:
+      - app-java-maven-network
+    depends_on:
+      - db-postgre
+    tty: true
+
+  db-postgre:
+    container_name: db-postgre
+    image: postgres:16.1-alpine3.19
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - app-java-maven-network
+    ports:
+      - 5432:5432
+    restart: always
+
+
+networks:
+  app-java-maven-network:
+    driver: bridge
+    external: false
+    name: app-java-maven-network
