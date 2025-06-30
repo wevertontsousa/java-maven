@@ -1,3 +1,12 @@
 {
-  "java.configuration.updateBuildConfiguration": "interactive"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "sqltools.connections": [{
+    "name": "Compose Service",
+    "driver": "PostgreSQL",
+    "server": "db-postgre",
+    "port": 5432,
+    "database": "postgres",
+    "username": "postgres",
+    "password": "#sa123"
+  }]
 }
