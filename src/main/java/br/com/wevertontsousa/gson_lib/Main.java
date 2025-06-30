@@ -1,4 +1,4 @@
-package br.com.wevertontsousa.gson;
+package br.com.wevertontsousa.gson_lib;
 
 import com.google.gson.Gson;
 
